@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tetris A.I.</title>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <link href='./css/bootstrap.css' rel='stylesheet' type='text/css'>
+  <link href='./css/index.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="output" class="text"></div>
+  <div id="score" class="text">
+  <br /><br /><h2>&nbsp;</h2><h2>Score: <span id="current_score"></span></h2>
+  <br /><b>--Upcoming--</b>
+  <br /><span id="next_shape"></span>
+  <br />Generation: <span id="Generation">0</span>
+  <br />Worker: <span id="Individual">1/50</span>
+  <br />Moves Taken: <span id="Moves">0</span>
+  </div>
+  <div id="instructions" class="text"><br /><b>[Key Commands]</b><br />Speed Up: [E]<br />Slow Down: [D]<br />Toggle AI: [A]<br />Move Shape: [Arrow Keys]<br />Rotate Shape: [Up Arrow]<br />Drop Shape: [Down Arrow]<br />Save State: [Q]<br />Load State: [W]<br />Get Archive: [G]<br />Load Archive: [R]<br />Pick Shape: [I,O,T,S,Z,J,L]</div>
+  <div id="panel-right">
+    <a href="#" onclick="showHistory();"><img src="./images/history.svg"/></a>
+    <a href="#" onclick="showTopScores();"><img src="./images/top_scores.svg"/></a>
+    <a href="#" onclick="if (confirm('Are you sure you want to reset your progress?')){ localStorage.clear('archive'); window.location.reload(); }"><img src="./images/reset.svg"/></a>
+    <br/>
+    <hr color="#34495e"/>
+    <br/>
+    <div id="panel-right-output" class="text table-responsive">
+      <table id="history" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Generation</th>
+            <th>High Score</th>
+            <th>Moves</th>
+          </tr>
+        </thead>
+        <tbody id="history-content"></tbody>
+      </table>
+      <table id="topscores" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Generation</th>
+            <th>High Score</th>
+            <th>Moves</th>
+          </tr>
+        </thead>
+        <tbody id="topscores-content"></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="./js/jquery-3.3.1.slim.min.js"></script>
+  <script src="./js/index.js" type="text/javascript"></script>
+  <script>
+    window.onload = (()=>{
+      window.wallpaperPropertyListener={
+        applyUserProperties: function(properties){
+          if(properties.speed){
+            changeSpeed = true;
+            speed = properties.speed.value;
+          }
+        }	
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -52,6 +52,6 @@ a:link {
   max-height: calc(100vh - 10px);
 }
 
-#topscores {
+#instructions, #topscores {
   display: none;
 }
